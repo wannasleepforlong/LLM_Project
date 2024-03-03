@@ -1,6 +1,14 @@
+import uvicorn
+from fastapi import FastAPI
+
+app = FastAPI()
+
 import google.generativeai as palm
 
-api_key = 'AIzaSyA0dtcycpyZIFYKEK-N3UUphgZstk1394A'
+
+with open("palm_api.txt") as f:
+    api_key = f.read()
+     
 palm.configure(api_key=api_key)
 
 prompt = 'I need help with my studies. Can TutKids assist me with tutoring services?'
@@ -15,14 +23,18 @@ examples = [
 
 response = palm.chat(messages=prompt, temperature=0.2, context='Chatting with TutKids', examples=examples)
 
-print("Welcome to TutKids! How can we assist you today?")
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to TutKids! How can we assist you today?"}
 
-while True:
-    user_input = input("You: ")
-    response = response.reply(user_input)
-    print("TutKids:", response.last)
-    
-import uvicorn
-from fastapi import FastAPI
-app = FastAPI(title='MADS API')
-uvicorn.run(app, host='0.0.0.0', port=8127, workers=2)
+@app.get("/chat/{user_input}")
+def get_chat_response(user_input: str):
+    global response
+    try:
+        response = response.reply(user_input)
+        return {"response": response.last}
+    except Exception as e:
+        return {"error": str(e)}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)
