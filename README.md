@@ -1,4 +1,5 @@
 # TutKids ChatBot using Google PaLM and FastAPI 
+![image](https://github.com/wannasleepforlong/TutKids-ChatBot-using-Google-PaLM-and-FastAPI/assets/109717763/2fdc3318-d595-4b0f-bf1c-78e12be3b6e3)
 
 Steps to reproduce:
 1. Open the cmd in the project directory.
