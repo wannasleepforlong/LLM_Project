@@ -21,3 +21,8 @@ while True:
     user_input = input("You: ")
     response = response.reply(user_input)
     print("TutKids:", response.last)
+    
+import uvicorn
+from fastapi import FastAPI
+app = FastAPI(title='MADS API')
+uvicorn.run(app, host='0.0.0.0', port=8127, workers=2)
