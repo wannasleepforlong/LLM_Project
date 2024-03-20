@@ -1,5 +1,5 @@
 # TutKids ChatBot using Google PaLM and FastAPI 
-This FastAPI application allows you to interact with the TutKids chatbot powered by the PALM (Powerful Language Model) API from Google GenerativeAI.
+This FastAPI application allows you to interact with the TutKids chatbot powered by the PaLM API from Google GenerativeAI.
 ![image](https://github.com/wannasleepforlong/TutKids-ChatBot-using-Google-PaLM-and-FastAPI/assets/109717763/2fdc3318-d595-4b0f-bf1c-78e12be3b6e3)
 
 Steps to reproduce:
